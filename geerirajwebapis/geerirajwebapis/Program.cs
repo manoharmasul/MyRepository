@@ -4,7 +4,7 @@ using geerirajwebapis.Repositories.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.WebHost.UseUrls($"http://*:{Environment.GetEnvironmentVariable("PORT") ?? "8080"}");
 
 // ✅ Increase max request body size for Kestrel (local web server)
 builder.WebHost.ConfigureKestrel(options =>
@@ -51,3 +51,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
